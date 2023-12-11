@@ -66,7 +66,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://dummyjson.com/products");
+        const response = await axios.get("https:dummyjson.com/products");
         setProducts(response.data.products);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -111,62 +111,62 @@ export default MapAndFilter;
 ```
 
 ```javascript
-[12/11/2023 2:05 PM] : // // src/App.js
+[12/11/2023 2:05 PM] :   src/App.js
 
-// import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+ import React, { useState, useEffect } from "react";
+ import { useNavigate } from "react-router-dom";
 
-// const Signup = () => {
-//   const [name, setName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const navigate = useNavigate();
+ const Signup = () => {
+   const [name, setName] = useState("");
+   const [email, setEmail] = useState("");
+   const navigate = useNavigate();
 
-//   // Load user's name from localStorage on component mount
-//   useEffect(() => {
-//     const storedName = localStorage.getItem("userName");
-//     if (storedName) {
-//       setName(storedName);
-//     }
-//   }, []);
+    Load user's name from localStorage on component mount
+   useEffect(() => {
+     const storedName = localStorage.getItem("userName");
+     if (storedName) {
+       setName(storedName);
+     }
+   }, []);
 
-//   const handleSend = () => {
-//     // Save user's name to localStorage
-//     localStorage.setItem("userName", name);
+   const handleSend = () => {
+      Save user's name to localStorage
+     localStorage.setItem("userName", name);
 
-//     // You can perform any necessary actions here before navigating
-//     // For now, just navigate to the next page with the name as a query parameter
-//     navigate(/welcome?name=${encodeURIComponent(name)});
-//   };
+      You can perform any necessary actions here before navigating
+      For now, just navigate to the next page with the name as a query parameter
+     navigate(/welcome?name=${encodeURIComponent(name)});
+   };
 
-//   return (
-//     <div className="flex flex-col items-center justify-center h-screen">
-//       <h1 className="text-4xl mb-6">Enter Details</h1>
-//       <input
-//         type="text"
-//         placeholder="Name"
-//         value={name}
-//         onChange={(e) => setName(e.target.value)}
-//         className="mb-4 p-2 border border-gray-300"
-//       />
-//       <input
-//         type="email"
-//         placeholder="Email"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//         className="mb-4 p-2 border border-gray-300"
-//       />
-//       <button
-//         onClick={handleSend}
-//         className="bg-blue-500 text-white p-2 rounded"
-//       >
-//         Send
-//       </button>
-//     </div>
-//   );
-// };
+   return (
+     <div className="flex flex-col items-center justify-center h-screen">
+       <h1 className="text-4xl mb-6">Enter Details</h1>
+       <input
+         type="text"
+         placeholder="Name"
+         value={name}
+         onChange={(e) => setName(e.target.value)}
+         className="mb-4 p-2 border border-gray-300"
+       />
+       <input
+         type="email"
+         placeholder="Email"
+         value={email}
+         onChange={(e) => setEmail(e.target.value)}
+         className="mb-4 p-2 border border-gray-300"
+       />
+       <button
+         onClick={handleSend}
+         className="bg-blue-500 text-white p-2 rounded"
+       >
+         Send
+       </button>
+     </div>
+   );
+ };
 
-// export default Signup;
-[12/11/2023 2:05 PM] : // src/Welcome.js
+ export default Signup;
+[12/11/2023 2:05 PM] :  src/Welcome.js
 
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -175,7 +175,7 @@ const Welcome = () => {
   const location = useLocation();
   const name = new URLSearchParams(location.search).get("name");
 
-  // Clear stored data when the component mounts
+   Clear stored data when the component mounts
   useEffect(() => {
     localStorage.removeItem("userName");
   }, []);
@@ -277,7 +277,7 @@ export default App;
 
 Todo
 ```javascript
-[12/11/2023 2:02 PM] : // src/components/TodoItem.jsx
+[12/11/2023 2:02 PM] :  src/components/TodoItem.jsx
 import React, { useState } from "react";
 
 const TodoItem = ({ todo, deleteTodo, updateTodo }) => {
@@ -336,7 +336,7 @@ const TodoItem = ({ todo, deleteTodo, updateTodo }) => {
 };
 
 export default TodoItem;
-[12/11/2023 2:02 PM] : // src/components/TodoList.jsx
+[12/11/2023 2:02 PM] :  src/components/TodoList.jsx
 import React from "react";
 import TodoItem from "./TodoItem";
 
@@ -356,43 +356,44 @@ const TodoList = ({ todos, deleteTodo, updateTodo }) => {
 };
 
 export default TodoList;
-[12/11/2023 2:03 PM] : // // src/App.jsx
-// import React, { useState } from "react";
-// import TodoList from "./components/TodoList";
-// import AddTodo from "./components/AddTodo";
+[12/11/2023 2:03 PM] :   src/App.jsx
+ import React, { useState } from "react";
+ import TodoList from "./components/TodoList";
+ import AddTodo from "./components/AddTodo";
 
-// function App() {
-//   const [todos, setTodos] = useState([]);
+ function App() {
+   const [todos, setTodos] = useState([]);
 
-//   const addTodo = (newTodo) => {
-//     setTodos([...todos, { id: Date.now(), title: newTodo }]);
-//   };
+   const addTodo = (newTodo) => {
+     setTodos([...todos, { id: Date.now(), title: newTodo }]);
+   };
 
-//   const deleteTodo = (id) => {
-//     setTodos(todos.filter((todo) => todo.id !== id));
-//   };
+   const deleteTodo = (id) => {
+     setTodos(todos.filter((todo) => todo.id !== id));
+   };
 
-//   const updateTodo = (id, updatedTitle) => {
-//     setTodos(
-//       todos.map((todo) =>
-//         todo.id === id ? { ...todo, title: updatedTitle } : todo
-//       )
-//     );
-//   };
+   const updateTodo = (id, updatedTitle) => {
+     setTodos(
+       todos.map((todo) =>
+         todo.id === id ? { ...todo, title: updatedTitle } : todo
+       )
+     );
+   };
 
-//   return (
-//     <div className="container mx-auto p-4">
-//       <h1 className="text-3xl font-bold mb-4">To-Do App</h1>
-//       <AddTodo addTodo={addTodo} />
-//       <TodoList todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo} />
-//     </div>
-//   );
-// }
+   return (
+     <div className="container mx-auto p-4">
+       <h1 className="text-3xl font-bold mb-4">To-Do App</h1>
+       <AddTodo addTodo={addTodo} />
+       <TodoList todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo} />
+     </div>
+   );
+ }
 
-// export default App;
+ export default App;
 ```
+
 ```Javascript
-[12/11/2023 12:53 PM] Avinash Pandey: // TextAppend.js
+ TextAppend.js
 import React, { useState } from 'react';
 import TextField from './TextField';
 
@@ -425,7 +426,7 @@ const TextAppend = () => {
 };
 
 export default TextAppend;
-[12/11/2023 12:53 PM] Avinash Pandey: // TextField.js
+[12/11/2023 12:53 PM] Avinash Pandey:  TextField.js
 import React from 'react';
 
 const TextField = ({ labelText, onChange }) => (
@@ -436,6 +437,8 @@ const TextField = ({ labelText, onChange }) => (
 );
 
 export default TextField;
+
+Counter - 
 [12/11/2023 2:00 PM] : import React, { useState } from "react";
 
 function Counter() {
@@ -467,6 +470,8 @@ function Counter() {
 
 export default Counter;
 [12/11/2023 2:00 PM] : import React, { useState } from "react";
+
+Bgchange - 
 
 function BgChange() {
   const storedColor = localStorage.getItem("backgroundColor");
@@ -505,6 +510,8 @@ function BgChange() {
 }
 
 export default BgChange;
+
+Props -
 [12/11/2023 2:01 PM] : import React from "react";
 
 function Props(props) {
@@ -514,7 +521,7 @@ function Props(props) {
       <div className="flex justify-center items-center h-screen">
         <div className="relative h-[400px] w-[300px] rounded-md flex justify-center items-center min">
           <img
-            src="https://images.unsplash.com/photo-1546961329-78bef0414d7c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+            src="https:images.unsplash.com/photo-1546961329-78bef0414d7c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
             alt="AirMax Pro"
             className="z-0 h-full w-full rounded-md object-cover"
           />
@@ -536,13 +543,13 @@ function Props(props) {
 
 export default Props;
 
-/**
- * In APp.jsx
- *  // let myObj = {
-  //   username: "Avinash",
-  //   age: 22,
-  // };
-  // let newArr = [1, 2, 3];
+
+ In APp.jsx
+  let myObj = {
+     username: "Avinash",
+     age: 22,
+   };
+   let newArr = [1, 2, 3];
   let myDetails = {
     userName: "Avinash",
     age: 21,
@@ -561,5 +568,5 @@ export default Props;
       />
     </>
   );
- */
+ 
 ```
